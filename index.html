@@ -4,198 +4,350 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Politique de confidentialité – SLS Games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
+  /* --- DESIGN SYSTEM SLS GAMES (Basé sur votre theme.dart) --- */
   :root {
-    --primary: #0f766e;
-    --primary-dark: #115e59;
-    --bg: #f8fafc;
-    --card: #ffffff;
-    --text: #1e293b;
-    --muted: #64748b;
-    --border: #e2e8f0;
-    --accent: #f59e0b;
+    --primary: #FF6B00; /* Orange énergique */
+    --primary-light: #FF8A3D;
+    --primary-dark: #CC5500;
+    --secondary: #1A1A2E; /* Bleu nuit profond */
+    --accent: #00F5D4; /* Cyan néon */
+    
+    --bg-dark: #0A0A0F;
+    --surface-dark: #1A1A2E;
+    --card-dark: #16213E;
+    
+    --text-primary: #FFFFFF;
+    --text-secondary: #E0E0E0;
+    --text-tertiary: #9E9E9E;
+    
+    --border: #2A2A3E;
+    --error: #FF1744;
+    
+    --radius-card: 20px;
+    --radius-btn: 16px;
+    --radius-pill: 999px;
+    
+    --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --shadow-elevated: 0 8px 20px rgba(0, 0, 0, 0.2);
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Typographie Arabe */
+  body[dir="rtl"] {
+    font-family: 'Tajawal', sans-serif;
     font-size: 16px;
   }
+
+  /* --- HEADER --- */
   header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--bg-dark) 100%);
     padding: 2.5rem 1.5rem 2rem;
     text-align: center;
+    border-bottom: 1px solid var(--border);
   }
-  header h1 { font-size: 2rem; margin-bottom: .5rem; letter-spacing: -.5px; }
-  header p { opacity: .9; font-size: .95rem; }
+  
+  .logo-text {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  .subtitle {
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  /* --- LANG SWITCH --- */
   .lang-switch {
-    display: flex;
-    justify-content: center;
-    gap: .5rem;
-    margin-top: 1.25rem;
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    gap: 2px;
   }
+  
   .lang-switch button {
-    background: rgba(255,255,255,.15);
-    border: 1px solid rgba(255,255,255,.3);
-    color: white;
-    padding: .5rem 1.2rem;
-    border-radius: 999px;
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-pill);
     cursor: pointer;
-    font-size: .9rem;
-    transition: all .2s;
-  }
-  .lang-switch button:hover { background: rgba(255,255,255,.25); }
-  .lang-switch button.active {
-    background: white;
-    color: var(--primary-dark);
+    font-size: 0.85rem;
     font-weight: 600;
+    transition: all 0.2s ease;
+    font-family: inherit;
   }
+  
+  .lang-switch button:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .lang-switch button.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 107, 0, 0.4);
+  }
+
+  /* --- MAIN CONTENT --- */
   main {
-    max-width: 820px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 2rem 1.25rem 4rem;
   }
-  .card {
-    background: var(--card);
-    border-radius: 14px;
-    padding: 2rem 2rem 1.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 8px 24px rgba(15,118,110,.06);
-  }
-  .updated {
+
+  .updated-badge {
     display: inline-block;
-    background: #fef3c7;
-    color: #92400e;
-    padding: .3rem .8rem;
-    border-radius: 999px;
-    font-size: .8rem;
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--primary);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.8rem;
     font-weight: 600;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 107, 0, 0.2);
   }
+
+  /* --- SECTIONS & CARDS --- */
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
   h2 {
-    font-size: 1.25rem;
-    color: var(--primary-dark);
-    margin-top: 2rem;
-    margin-bottom: .75rem;
-    padding-bottom: .4rem;
-    border-bottom: 2px solid var(--border);
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-  h2:first-of-type { margin-top: 0; }
-  h3 {
-    font-size: 1.05rem;
-    color: var(--text);
-    margin-top: 1.25rem;
-    margin-bottom: .5rem;
+
+  /* Petite barre orange avant les titres */
+  h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background: var(--primary);
+    border-radius: 2px;
   }
-  p { margin-bottom: .9rem; }
-  ul { margin: .5rem 0 1rem 1.4rem; }
-  li { margin-bottom: .4rem; }
-  a { color: var(--primary); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .contact-box {
-    background: #f0fdfa;
+
+  body[dir="rtl"] h2::before {
+    margin-left: 8px;
+    margin-right: 0;
+  }
+  body[dir="ltr"] h2::before {
+    margin-right: 8px;
+    margin-left: 0;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+  }
+
+  ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  body[dir="rtl"] ul {
+    padding-left: 0;
+    padding-right: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.6rem;
+    color: var(--text-secondary);
+    position: relative;
+  }
+
+  li::marker {
+    color: var(--primary);
+  }
+
+  /* --- CARDS D'INFORMATION (Style de votre app) --- */
+  .info-card {
+    background-color: var(--card-dark);
+    border-radius: var(--radius-card);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .info-card.primary-border {
     border-left: 4px solid var(--primary);
-    padding: 1rem 1.25rem;
-    border-radius: 8px;
-    margin: 1rem 0;
   }
-  .contact-box strong { color: var(--primary-dark); }
+  
+  body[dir="rtl"] .info-card.primary-border {
+    border-left: 1px solid var(--border);
+    border-right: 4px solid var(--primary);
+  }
+
+  .info-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-card strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .info-card a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+
+  .info-card a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  /* --- FOOTER --- */
   footer {
     text-align: center;
     padding: 2rem 1rem;
-    color: var(--muted);
-    font-size: .85rem;
+    color: var(--text-tertiary);
+    font-size: 0.85rem;
     border-top: 1px solid var(--border);
-    margin-top: 2rem;
+    background: var(--surface-dark);
   }
-  .lang { display: none; }
-  .lang.active { display: block; }
+
+  /* --- LOGIQUE D'AFFICHAGE DES LANGUES --- */
+  .lang-content { display: none; }
+  .lang-content.active { display: block; }
+
+  /* --- RESPONSIVE --- */
   @media (max-width: 600px) {
-    header h1 { font-size: 1.5rem; }
-    .card { padding: 1.5rem 1.25rem; }
-    h2 { font-size: 1.1rem; }
+    header { padding: 2rem 1rem 1.5rem; }
+    .logo-text { font-size: 1.8rem; }
+    main { padding: 1.5rem 1rem 3rem; }
+    h2 { font-size: 1.15rem; }
+    .info-card { padding: 1rem 1.25rem; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>SLS Games</h1>
-  <p id="header-sub">Politique de confidentialité · Privacy Policy</p>
+  <div class="logo-text">SLS Games</div>
+  <div class="subtitle" id="subtitle-text">Politique de confidentialité</div>
+  
   <div class="lang-switch">
-    <button id="btn-fr" class="active" onclick="setLang('fr')">🇫🇷 Français</button>
-    <button id="btn-en" onclick="setLang('en')">🇬🇧 English</button>
+    <button id="btn-fr" class="active" onclick="setLang('fr')">FR</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+    <button id="btn-ar" onclick="setLang('ar')">AR</button>
   </div>
 </header>
 
 <main>
 
 <!-- ==================== FRANÇAIS ==================== -->
-<section id="lang-fr" class="lang active">
-  <div class="card">
-    <span class="updated">Dernière mise à jour : 17 octobre 2026</span>
+<div id="content-fr" class="lang-content active">
+  <div class="updated-badge">Dernière mise à jour : 17 octobre 2026</div>
 
+  <div class="section">
     <h2>1. Introduction</h2>
     <p>Bienvenue sur <strong>SLS Games</strong>, une application mobile dédiée aux sportifs, aux coachs et aux établissements sportifs.</p>
     <p>SLS Games permet notamment de gérer les profils sportifs, rejoindre une salle, consulter les entraînements, enregistrer les performances, suivre les abonnements et les présences, et faciliter la gestion des activités sportives.</p>
     <p>La présente Politique de confidentialité explique comment nous collectons, utilisons, conservons, partageons et protégeons les données personnelles des utilisateurs.</p>
     <p>Le traitement des données personnelles est effectué conformément à la législation algérienne applicable, notamment la loi n° 18-07 relative à la protection des personnes physiques dans le traitement des données à caractère personnel, telle que modifiée.</p>
+  </div>
 
+  <div class="section">
     <h2>2. Responsable du traitement</h2>
-    <div class="contact-box">
+    <div class="info-card primary-border">
       <strong>Responsable :</strong> Coach Samir Benaissa – SLS Games<br>
       <strong>Email :</strong> <a href="mailto:support@santelifestyle.com">support@santelifestyle.com</a><br>
       <strong>WhatsApp :</strong> <a href="https://wa.me/213550281978">+213 550 281 978</a>
     </div>
     <p>Pour toute question concernant vos données personnelles, vous pouvez contacter le responsable aux coordonnées indiquées ci-dessus.</p>
+  </div>
 
+  <div class="section">
     <h2>3. Données personnelles collectées</h2>
     <p>SLS Games collecte les informations nécessaires au fonctionnement de ses services, selon les fonctionnalités utilisées.</p>
+    
+    <div class="info-card">
+      <p><strong>Données du compte et du profil :</strong></p>
+      <ul>
+        <li>Nom et prénom</li>
+        <li>Adresse e-mail</li>
+        <li>Numéro de téléphone, lorsqu'il est fourni</li>
+        <li>Informations du profil sportif</li>
+        <li>Photo de profil, lorsqu'elle est ajoutée</li>
+        <li>Identifiant utilisateur et rôles attribués</li>
+      </ul>
+    </div>
 
-    <h3>Données du compte et du profil</h3>
-    <ul>
-      <li>Nom et prénom</li>
-      <li>Adresse e-mail</li>
-      <li>Numéro de téléphone, lorsqu'il est fourni</li>
-      <li>Informations du profil sportif</li>
-      <li>Photo de profil, lorsqu'elle est ajoutée</li>
-      <li>Identifiant utilisateur et rôles attribués</li>
-    </ul>
+    <div class="info-card">
+      <p><strong>Données liées à l'activité sportive :</strong></p>
+      <ul>
+        <li>Niveau et préférences d'entraînement</li>
+        <li>Programmes et séances</li>
+        <li>Résultats, scores et performances</li>
+        <li>Historique des entraînements</li>
+        <li>Participations aux événements et compétitions</li>
+        <li>Présences et validations des séances</li>
+        <li>Commentaires et retours sportifs</li>
+      </ul>
+    </div>
 
-    <h3>Données liées à l'activité sportive</h3>
-    <ul>
-      <li>Niveau et préférences d'entraînement</li>
-      <li>Programmes et séances</li>
-      <li>Résultats, scores et performances</li>
-      <li>Historique des entraînements</li>
-      <li>Participations aux événements et compétitions</li>
-      <li>Présences et validations des séances</li>
-      <li>Commentaires et retours sportifs</li>
-    </ul>
+    <div class="info-card">
+      <p><strong>Données liées aux salles et aux abonnements :</strong></p>
+      <ul>
+        <li>Salle d'affiliation</li>
+        <li>Statut d'adhésion</li>
+        <li>Type de forfait ou d'abonnement</li>
+        <li>Dates de début et d'expiration</li>
+        <li>Crédits de séances et historique d'utilisation</li>
+        <li>Historique des paiements et transactions</li>
+        <li>Enregistrements de présence par QR code</li>
+      </ul>
+    </div>
 
-    <h3>Données liées aux salles et aux abonnements</h3>
-    <ul>
-      <li>Salle d'affiliation</li>
-      <li>Statut d'adhésion</li>
-      <li>Type de forfait ou d'abonnement</li>
-      <li>Dates de début et d'expiration</li>
-      <li>Crédits de séances et historique d'utilisation</li>
-      <li>Historique des paiements et transactions</li>
-      <li>Enregistrements de présence par QR code</li>
-    </ul>
-
-    <h3>Données techniques</h3>
-    <ul>
-      <li>Type d'appareil et système d'exploitation</li>
-      <li>Identifiants de session et d'authentification</li>
-      <li>Informations techniques nécessaires à la sécurité</li>
-      <li>Jetons techniques utilisés pour les notifications</li>
-      <li>Données de diagnostic en cas de dysfonctionnement</li>
-    </ul>
+    <div class="info-card">
+      <p><strong>Données techniques :</strong></p>
+      <ul>
+        <li>Type d'appareil et système d'exploitation</li>
+        <li>Identifiants de session et d'authentification</li>
+        <li>Informations techniques nécessaires à la sécurité</li>
+        <li>Jetons techniques utilisés pour les notifications</li>
+        <li>Données de diagnostic en cas de dysfonctionnement</li>
+      </ul>
+    </div>
     <p>Certaines informations peuvent être visibles par les coachs ou responsables de salles autorisés dans le cadre de leurs fonctions.</p>
+  </div>
 
+  <div class="section">
     <h2>4. Autorisations de l'application</h2>
     <p>Certaines fonctionnalités peuvent nécessiter les autorisations suivantes :</p>
     <ul>
@@ -204,7 +356,9 @@
       <li><strong>Notifications :</strong> recevoir des informations concernant les séances, les abonnements, les événements et les communications importantes.</li>
     </ul>
     <p>L'utilisateur peut gérer les autorisations disponibles depuis les paramètres de son appareil.</p>
+  </div>
 
+  <div class="section">
     <h2>5. Finalités du traitement</h2>
     <p>Les données personnelles sont utilisées notamment pour :</p>
     <ul>
@@ -222,7 +376,9 @@
       <li>Prévenir les abus et les accès non autorisés.</li>
       <li>Améliorer la sécurité et la fiabilité de l'application.</li>
     </ul>
+  </div>
 
+  <div class="section">
     <h2>6. Base juridique du traitement</h2>
     <p>Selon la nature des données et des fonctionnalités, leur traitement peut reposer sur :</p>
     <ul>
@@ -232,7 +388,9 @@
       <li><strong>Les intérêts légitimes :</strong> lorsque cette base est applicable, notamment pour la sécurité, la prévention des abus et le bon fonctionnement du service.</li>
     </ul>
     <p>Les demandes d'autorisation du système d'exploitation restent distinctes des autres mécanismes de consentement éventuellement requis.</p>
+  </div>
 
+  <div class="section">
     <h2>7. Accès et partage des données</h2>
     <p>SLS Games ne vend pas les données personnelles de ses utilisateurs.</p>
     <p>Dans la limite des autorisations accordées :</p>
@@ -244,7 +402,9 @@
       <li>Les prestataires techniques peuvent traiter les données nécessaires au fonctionnement de l'application.</li>
     </ul>
     <p>Les données ne doivent être consultées que pour les finalités correspondant aux fonctions autorisées.</p>
+  </div>
 
+  <div class="section">
     <h2>8. Services techniques tiers</h2>
     <p>SLS Games utilise ou peut utiliser les services techniques suivants :</p>
     <ul>
@@ -253,7 +413,9 @@
       <li><strong>Services techniques nécessaires :</strong> fonctionnement, maintenance, sécurité et diagnostic de l'application.</li>
     </ul>
     <p>Certains prestataires peuvent traiter ou héberger des données en dehors de l'Algérie. Ces traitements doivent être encadrés conformément aux exigences légales applicables en matière de transfert de données personnelles.</p>
+  </div>
 
+  <div class="section">
     <h2>9. Conservation des données</h2>
     <p>Les données sont conservées pendant la durée nécessaire à la fourniture des services et à la réalisation des finalités décrites dans cette politique.</p>
     <p>Certaines informations peuvent être conservées plus longtemps lorsqu'elles sont nécessaires pour :</p>
@@ -265,15 +427,21 @@
       <li>Assurer la sécurité et prévenir les utilisations frauduleuses.</li>
     </ul>
     <p>Les informations personnelles qui ne sont plus nécessaires sont supprimées ou anonymisées lorsque cela est approprié.</p>
+  </div>
 
+  <div class="section">
     <h2>10. Suppression du compte</h2>
     <p>L'utilisateur peut demander la suppression de son compte directement depuis l'application :</p>
-    <div class="contact-box"><strong>Profil → Paramètres → Supprimer mon compte</strong></div>
+    <div class="info-card primary-border">
+      <strong>Profil → Paramètres → Supprimer mon compte</strong>
+    </div>
     <p>La suppression nécessite une confirmation et une vérification de l'identité de l'utilisateur.</p>
     <p>Après validation, les données personnelles concernées sont supprimées ou anonymisées, sous réserve des informations dont la conservation reste nécessaire pour des raisons légales, comptables ou de traçabilité.</p>
     <p>Certaines situations peuvent nécessiter une action préalable, notamment lorsqu'un utilisateur est responsable d'une salle ou possède des responsabilités actives dans l'organisation de séances.</p>
     <p>L'utilisateur peut également contacter <a href="mailto:support@santelifestyle.com">support@santelifestyle.com</a> pour toute question relative à la suppression de son compte.</p>
+  </div>
 
+  <div class="section">
     <h2>11. Droits des utilisateurs</h2>
     <p>Dans les conditions prévues par la législation applicable, les utilisateurs peuvent demander :</p>
     <ul>
@@ -285,11 +453,13 @@
       <li>L'opposition à certains traitements dans les cas prévus par la loi.</li>
     </ul>
     <p>Pour exercer ces droits, contactez :</p>
-    <div class="contact-box">
+    <div class="info-card primary-border">
       <strong>Email :</strong> <a href="mailto:support@santelifestyle.com">support@santelifestyle.com</a><br>
       <strong>WhatsApp :</strong> <a href="https://wa.me/213550281978">+213 550 281 978</a>
     </div>
+  </div>
 
+  <div class="section">
     <h2>12. Sécurité des données</h2>
     <p>SLS Games met en œuvre des mesures techniques et organisationnelles destinées à protéger les données personnelles.</p>
     <p>Ces mesures comprennent notamment :</p>
@@ -301,85 +471,103 @@
       <li>Des mesures de sécurité et de journalisation adaptées.</li>
     </ul>
     <p>Aucun système informatique ne peut garantir une sécurité absolue. SLS Games s'efforce de limiter les risques d'accès non autorisé, de perte ou d'utilisation abusive.</p>
+  </div>
 
+  <div class="section">
     <h2>13. Modifications de la politique</h2>
     <p>Cette politique peut être mise à jour en fonction de l'évolution des fonctionnalités de SLS Games ou des exigences légales applicables.</p>
     <p>En cas de changement important, les utilisateurs pourront être informés par l'application ou par un autre moyen approprié.</p>
+  </div>
 
+  <div class="section">
     <h2>14. Contact</h2>
     <p>Pour toute question relative à la confidentialité ou à vos données personnelles :</p>
-    <div class="contact-box">
+    <div class="info-card primary-border">
       <strong>Coach Samir Benaissa – SLS Games</strong><br>
       <strong>Email :</strong> <a href="mailto:support@santelifestyle.com">support@santelifestyle.com</a><br>
       <strong>WhatsApp :</strong> <a href="https://wa.me/213550281978">+213 550 281 978</a>
     </div>
   </div>
-</section>
+</div>
 
 <!-- ==================== ENGLISH ==================== -->
-<section id="lang-en" class="lang">
-  <div class="card">
-    <span class="updated">Last updated: October 17, 2026</span>
+<div id="content-en" class="lang-content">
+  <div class="updated-badge">Last updated: October 17, 2026</div>
 
+  <div class="section">
     <h2>1. Introduction</h2>
     <p>Welcome to <strong>SLS Games</strong>, a mobile application designed for athletes, coaches, and fitness facilities.</p>
     <p>SLS Games enables users to manage sports profiles, join gyms, access training sessions, record performances, track memberships, and manage sports activities.</p>
     <p>This Privacy Policy explains how we collect, use, store, share, and protect users' personal information.</p>
     <p>Personal data is processed in accordance with applicable Algerian legislation, including Law No. 18-07 concerning the protection of individuals in relation to personal data processing, as amended.</p>
+  </div>
 
+  <div class="section">
     <h2>2. Data Controller</h2>
-    <div class="contact-box">
+    <div class="info-card primary-border">
       <strong>Controller:</strong> Coach Samir Benaissa – SLS Games<br>
       <strong>Email:</strong> <a href="mailto:support@santelifestyle.com">support@santelifestyle.com</a><br>
       <strong>WhatsApp:</strong> <a href="https://wa.me/213550281978">+213 550 281 978</a>
     </div>
     <p>For questions regarding personal data, please contact the controller using the details above.</p>
+  </div>
 
+  <div class="section">
     <h2>3. Personal Data We Collect</h2>
     <p>Depending on the features used, SLS Games may collect the following information.</p>
 
-    <h3>Account and profile information</h3>
-    <ul>
-      <li>Full name</li>
-      <li>Email address</li>
-      <li>Phone number, when provided</li>
-      <li>Sports profile information</li>
-      <li>Profile photo, when uploaded</li>
-      <li>User identifiers and assigned roles</li>
-    </ul>
+    <div class="info-card">
+      <p><strong>Account and profile information:</strong></p>
+      <ul>
+        <li>Full name</li>
+        <li>Email address</li>
+        <li>Phone number, when provided</li>
+        <li>Sports profile information</li>
+        <li>Profile photo, when uploaded</li>
+        <li>User identifiers and assigned roles</li>
+      </ul>
+    </div>
 
-    <h3>Sports and training data</h3>
-    <ul>
-      <li>Training level and preferences</li>
-      <li>Training plans and sessions</li>
-      <li>Workout results and performance scores</li>
-      <li>Training history</li>
-      <li>Event and competition participation</li>
-      <li>Attendance and session validation records</li>
-      <li>Sports feedback and comments</li>
-    </ul>
+    <div class="info-card">
+      <p><strong>Sports and training data:</strong></p>
+      <ul>
+        <li>Training level and preferences</li>
+        <li>Training plans and sessions</li>
+        <li>Workout results and performance scores</li>
+        <li>Training history</li>
+        <li>Event and competition participation</li>
+        <li>Attendance and session validation records</li>
+        <li>Sports feedback and comments</li>
+      </ul>
+    </div>
 
-    <h3>Gym and membership information</h3>
-    <ul>
-      <li>Gym affiliation</li>
-      <li>Membership status</li>
-      <li>Subscription or package details</li>
-      <li>Subscription start and expiration dates</li>
-      <li>Session credits and usage history</li>
-      <li>Payment and transaction history</li>
-      <li>QR-code attendance records</li>
-    </ul>
+    <div class="info-card">
+      <p><strong>Gym and membership information:</strong></p>
+      <ul>
+        <li>Gym affiliation</li>
+        <li>Membership status</li>
+        <li>Subscription or package details</li>
+        <li>Subscription start and expiration dates</li>
+        <li>Session credits and usage history</li>
+        <li>Payment and transaction history</li>
+        <li>QR-code attendance records</li>
+      </ul>
+    </div>
 
-    <h3>Technical information</h3>
-    <ul>
-      <li>Device type and operating system</li>
-      <li>Authentication and session identifiers</li>
-      <li>Technical security information</li>
-      <li>Push notification tokens</li>
-      <li>Diagnostic information needed to investigate technical issues</li>
-    </ul>
+    <div class="info-card">
+      <p><strong>Technical information:</strong></p>
+      <ul>
+        <li>Device type and operating system</li>
+        <li>Authentication and session identifiers</li>
+        <li>Technical security information</li>
+        <li>Push notification tokens</li>
+        <li>Diagnostic information needed to investigate technical issues</li>
+      </ul>
+    </div>
     <p>Certain information may be accessible to authorized coaches or gym managers as required to perform their duties.</p>
+  </div>
 
+  <div class="section">
     <h2>4. App Permissions</h2>
     <p>Some features may request the following permissions:</p>
     <ul>
@@ -388,7 +576,9 @@
       <li><strong>Notifications:</strong> to receive updates regarding sessions, memberships, events, and important service communications.</li>
     </ul>
     <p>Users may manage available permissions through their device settings.</p>
+  </div>
 
+  <div class="section">
     <h2>5. Purposes of Data Processing</h2>
     <p>Personal data may be used to:</p>
     <ul>
@@ -406,7 +596,9 @@
       <li>Prevent abuse and unauthorized access.</li>
       <li>Improve application security and reliability.</li>
     </ul>
+  </div>
 
+  <div class="section">
     <h2>6. Legal Basis for Processing</h2>
     <p>Depending on the processing activity, personal data may be processed based on:</p>
     <ul>
@@ -416,7 +608,9 @@
       <li><strong>Legitimate interests:</strong> where applicable, including platform security, abuse prevention, and service reliability.</li>
     </ul>
     <p>Device permissions are separate from any other consent requirements that may apply.</p>
+  </div>
 
+  <div class="section">
     <h2>7. Data Access and Sharing</h2>
     <p>SLS Games does not sell users' personal data.</p>
     <p>Subject to applicable access permissions:</p>
@@ -428,7 +622,9 @@
       <li>Technical providers may process information necessary to operate the application.</li>
     </ul>
     <p>Personal information should be accessed only for purposes consistent with the user's authorized responsibilities.</p>
+  </div>
 
+  <div class="section">
     <h2>8. Third-Party Technical Services</h2>
     <p>SLS Games uses or may use the following technical services:</p>
     <ul>
@@ -437,7 +633,9 @@
       <li><strong>Other necessary technical services:</strong> maintenance, security, diagnostics, and application operation.</li>
     </ul>
     <p>Some service providers may store or process information outside Algeria. Such processing must be handled in accordance with applicable legal requirements concerning international transfers of personal data.</p>
+  </div>
 
+  <div class="section">
     <h2>9. Data Retention</h2>
     <p>Personal data is retained for as long as necessary to provide the service and fulfill the purposes described in this policy.</p>
     <p>Certain information may be retained longer where required to:</p>
@@ -449,15 +647,21 @@
       <li>Maintain security and prevent fraud.</li>
     </ul>
     <p>Personal information that is no longer necessary is deleted or anonymized where appropriate.</p>
+  </div>
 
+  <div class="section">
     <h2>10. Account Deletion</h2>
     <p>Users can request account deletion directly within the application:</p>
-    <div class="contact-box"><strong>Profile → Settings → Delete My Account</strong></div>
+    <div class="info-card primary-border">
+      <strong>Profile → Settings → Delete My Account</strong>
+    </div>
     <p>Account deletion requires user confirmation and identity verification.</p>
     <p>Following successful processing, the relevant personal information is deleted or anonymized, subject to legal, accounting, and necessary audit retention requirements.</p>
     <p>Additional action may be required when the user owns a gym or has active coaching or organizational responsibilities.</p>
     <p>Users may also contact <a href="mailto:support@santelifestyle.com">support@santelifestyle.com</a> regarding account deletion.</p>
+  </div>
 
+  <div class="section">
     <h2>11. User Rights</h2>
     <p>Subject to applicable legislation, users may request:</p>
     <ul>
@@ -469,11 +673,13 @@
       <li>Objection to certain processing activities where permitted by law.</li>
     </ul>
     <p>To exercise these rights, contact:</p>
-    <div class="contact-box">
+    <div class="info-card primary-border">
       <strong>Email:</strong> <a href="mailto:support@santelifestyle.com">support@santelifestyle.com</a><br>
       <strong>WhatsApp:</strong> <a href="https://wa.me/213550281978">+213 550 281 978</a>
     </div>
+  </div>
 
+  <div class="section">
     <h2>12. Data Security</h2>
     <p>SLS Games implements technical and organizational safeguards designed to protect personal data.</p>
     <p>These include:</p>
@@ -485,34 +691,276 @@
       <li>Appropriate security and logging measures.</li>
     </ul>
     <p>No information system can guarantee absolute security. SLS Games takes reasonable measures to reduce the risk of unauthorized access, loss, or misuse.</p>
+  </div>
 
+  <div class="section">
     <h2>13. Changes to This Policy</h2>
     <p>This Privacy Policy may be updated to reflect changes in SLS Games, its features, or applicable legal requirements.</p>
     <p>Users may be informed of significant changes through the application or other appropriate channels.</p>
+  </div>
 
+  <div class="section">
     <h2>14. Contact</h2>
     <p>For privacy-related questions or requests:</p>
-    <div class="contact-box">
+    <div class="info-card primary-border">
       <strong>Coach Samir Benaissa – SLS Games</strong><br>
       <strong>Email:</strong> <a href="mailto:support@santelifestyle.com">support@santelifestyle.com</a><br>
       <strong>WhatsApp:</strong> <a href="https://wa.me/213550281978">+213 550 281 978</a>
     </div>
   </div>
-</section>
+</div>
+
+<!-- ==================== العربية (ARABE) ==================== -->
+<div id="content-ar" class="lang-content" dir="rtl">
+  <div class="updated-badge">آخر تحديث: 17 أكتوبر 2026</div>
+
+  <div class="section">
+    <h2>1. المقدمة</h2>
+    <p>مرحبًا بك في <strong>SLS Games</strong>، وهو تطبيق جوال مخصص للرياضيين والمدربين والمنشآت الرياضية.</p>
+    <p>يتيح SLS Games للمستخدمين إدارة الملفات الرياضية، والانضمام إلى الصالات الرياضية، والاطلاع على التدريبات، وتسجيل الأداء، ومتابعة الاشتراكات والحضور، وتسهيل إدارة الأنشطة الرياضية.</p>
+    <p>توضح سياسة الخصوصية هذه كيفية جمعنا واستخدامنا وتخزيننا ومشاركتنا وحمايتنا للمعلومات الشخصية للمستخدمين.</p>
+    <p>تتم معالجة البيانات الشخصية وفقًا للتشريع الجزائري المعمول به، ولا سيما القانون رقم 18-07 المتعلق بحماية الأشخاص الطبيعيين في مجال معالجة البيانات ذات الطابع الشخصي، وتعديلاته.</p>
+  </div>
+
+  <div class="section">
+    <h2>2. المسؤول عن معالجة البيانات</h2>
+    <div class="info-card primary-border">
+      <strong>المسؤول:</strong> المدرب سمير بن عيسى – SLS Games<br>
+      <strong>البريد الإلكتروني:</strong> <a href="mailto:support@santelifestyle.com">support@santelifestyle.com</a><br>
+      <strong>واتساب:</strong> <a href="https://wa.me/213550281978">+213 550 281 978</a>
+    </div>
+    <p>لأي استفسار بخصوص بياناتك الشخصية، يمكنك التواصل مع المسؤول باستخدام التفاصيل المذكورة أعلاه.</p>
+  </div>
+
+  <div class="section">
+    <h2>3. البيانات الشخصية التي نجمعها</h2>
+    <p>اعتمادًا على الميزات المستخدمة، قد يجمع SLS Games المعلومات التالية.</p>
+
+    <div class="info-card">
+      <p><strong>معلومات الحساب والملف الشخصي:</strong></p>
+      <ul>
+        <li>الاسم الكامل</li>
+        <li>البريد الإلكتروني</li>
+        <li>رقم الهاتف، عند تقديمه</li>
+        <li>معلومات الملف الرياضي</li>
+        <li>صورة الملف الشخصي، عند رفعها</li>
+        <li>معرفات المستخدم والأدوار المخصصة</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <p><strong>البيانات الرياضية والتدريبية:</strong></p>
+      <ul>
+        <li>مستوى التدريب والتفضيلات</li>
+        <li>خطط التدريب والحصص</li>
+        <li>نتائج التمارين ودرجات الأداء</li>
+        <li>سجل التدريبات</li>
+        <li>المشاركة في الفعاليات والمسابقات</li>
+        <li>سجلات الحضور والتحقق من الحصص</li>
+        <li>التعليقات والملاحظات الرياضية</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <p><strong>معلومات الصالة والاشتراك:</strong></p>
+      <ul>
+        <li>الصالة الرياضية التابعة</li>
+        <li>حالة العضوية</li>
+        <li>تفاصيل الاشتراك أو الباقة</li>
+        <li>تواريخ بدء وانتهاء الاشتراك</li>
+        <li>أرصدة الحصص وسجل الاستخدام</li>
+        <li>سجل المدفوعات والمعاملات</li>
+        <li>سجلات الحضور عبر رمز الاستجابة السريعة (QR)</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <p><strong>المعلومات التقنية:</strong></p>
+      <ul>
+        <li>نوع الجهاز ونظام التشغيل</li>
+        <li>معرفات المصادقة والجلسة</li>
+        <li>المعلومات التقنية الأمنية</li>
+        <li>رموز الإشعارات الفورية</li>
+        <li>معلومات التشخيص اللازمة للتحقيق في المشكلات التقنية</li>
+      </ul>
+    </div>
+    <p>قد تكون بعض المعلومات متاحة للمدربين أو مديري الصالات المعتمدين حسب ما تقتضيه واجباتهم.</p>
+  </div>
+
+  <div class="section">
+    <h2>4. أذونات التطبيق</h2>
+    <p>قد تطلب بعض الميزات الأذونات التالية:</p>
+    <ul>
+      <li><strong>الكاميرا:</strong> لمسح رموز QR لدخول الصالة أو الميزات الرياضية الأخرى.</li>
+      <li><strong>الصور والمعرض:</strong> لاختيار صور الملف الشخصي أو الصور الأخرى المصرح بها من المستخدم.</li>
+      <li><strong>الإشعارات:</strong> لتلقي التحديثات المتعلقة بالحصص والعضويات والفعاليات والاتصالات المهمة للخدمة.</li>
+    </ul>
+    <p>يمكن للمستخدمين إدارة الأذونات المتاحة من خلال إعدادات أجهزتهم.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. أغراض معالجة البيانات</h2>
+    <p>قد تُستخدم البيانات الشخصية من أجل:</p>
+    <ul>
+      <li>إنشاء وإدارة حسابات المستخدمين.</li>
+      <li>مصادقة المستخدمين وتأمين الوصول.</li>
+      <li>إدارة ملفات الرياضيين والمدربين ومديري الصالات.</li>
+      <li>تنظيم الحصص التدريبية والبرامج الرياضية.</li>
+      <li>تسجيل نتائج الأداء وتتبع التقدم.</li>
+      <li>إدارة تسجيل ومشاركة الفعاليات.</li>
+      <li>إدارة عضويات الصالات والاشتراكات وأرصدة الحصص.</li>
+      <li>تسجيل الحضور في الصالة وعمليات تسجيل الوصول عبر QR.</li>
+      <li>الاحتفاظ بسجلات المدفوعات والمعاملات النقدية.</li>
+      <li>إرسال الإشعارات المتعلقة بالخدمة.</li>
+      <li>تقديم دعم العملاء.</li>
+      <li>منع سوء الاستخدام والوصول غير المصرح به.</li>
+      <li>تحسين أمان التطبيق وموثوقيته.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>6. الأساس القانوني للمعالجة</h2>
+    <p>اعتمادًا على نشاط المعالجة، قد تتم معالجة البيانات الشخصية بناءً على:</p>
+    <ul>
+      <li><strong>تنفيذ الخدمة:</strong> لتقديم الحساب والعضوية والتدريب والخدمات الأخرى المطلوبة.</li>
+      <li><strong>الموافقة:</strong> عندما تكون مطلوبة لنشاط أو ميزة معينة.</li>
+      <li><strong>الالتزامات القانونية:</strong> بما في ذلك متطلبات المحاسبة وحفظ السجلات المعمول بها.</li>
+      <li><strong>المصالح المشروعة:</strong> عند الاقتضاء، بما في ذلك أمان المنصة ومنع سوء الاستخدام وموثوقية الخدمة.</li>
+    </ul>
+    <p>أذونات الجهاز منفصلة عن أي متطلبات موافقة أخرى قد تنطبق.</p>
+  </div>
+
+  <div class="section">
+    <h2>7. الوصول إلى البيانات ومشاركتها</h2>
+    <p>لا يبيع SLS Games البيانات الشخصية للمستخدمين.</p>
+    <p>رهنًا بأذونات الوصول المعمول بها:</p>
+    <ul>
+      <li>يمكن للرياضيين الوصول إلى معلوماتهم الخاصة والبيانات الظاهرة من خلال الميزات الرياضية.</li>
+      <li>يمكن للمدربين المعتمدين الوصول إلى المعلومات اللازمة لتنظيم التدريب ومراقبة المشاركة.</li>
+      <li>يمكن لمديري الصالات والموظفين المعتمدين الوصول إلى المعلومات المطلوبة لإدارة العضويات والحضور والاشتراكات والمدفوعات.</li>
+      <li>يمكن للمسؤولين المعتمدين الوصول إلى المعلومات اللازمة للدعم الفني والأمان والإدارة.</li>
+      <li>قد يعالج مقدمو الخدمات التقنية المعلومات اللازمة لتشغيل التطبيق.</li>
+    </ul>
+    <p>يجب الوصول إلى المعلومات الشخصية فقط للأغراض المتوافقة مع المسؤوليات المصرح بها للمستخدم.</p>
+  </div>
+
+  <div class="section">
+    <h2>8. الخدمات التقنية الخارجية</h2>
+    <p>يستخدم SLS Games أو قد يستخدم الخدمات التقنية التالية:</p>
+    <ul>
+      <li><strong>Supabase:</strong> المصادقة وقاعدة البيانات والتخزين وخدمات الخلفية.</li>
+      <li><strong>Firebase Cloud Messaging:</strong> تسليم الإشعارات الفورية.</li>
+      <li><strong>خدمات تقنية ضرورية أخرى:</strong> الصيانة والأمان والتشخيص وتشغيل التطبيق.</li>
+    </ul>
+    <p>قد يقوم بعض مزودي الخدمة بتخزين أو معالجة المعلومات خارج الجزائر. يجب التعامل مع هذه المعالجة وفقًا للمتطلبات القانونية المعمول بها بشأن النقل الدولي للبيانات الشخصية.</p>
+  </div>
+
+  <div class="section">
+    <h2>9. الاحتفاظ بالبيانات</h2>
+    <p>يتم الاحتفاظ بالبيانات الشخصية طالما كان ذلك ضروريًا لتقديم الخدمة وتحقيق الأغراض الموضحة في هذه السياسة.</p>
+    <p>قد يتم الاحتفاظ ببعض المعلومات لفترة أطول عند الحاجة إلى:</p>
+    <ul>
+      <li>الامتثال للالتزامات القانونية أو المحاسبية.</li>
+      <li>الحفاظ على السجلات المالية والتجارية الضرورية.</li>
+      <li>توثيق المدفوعات والمعاملات النقدية.</li>
+      <li>حل الشكاوى أو النزاعات.</li>
+      <li>الحفاظ على الأمان ومنع الاحتيال.</li>
+    </ul>
+    <p>يتم حذف المعلومات الشخصية التي لم تعد ضرورية أو إخفاء هويتها عند الاقتضاء.</p>
+  </div>
+
+  <div class="section">
+    <h2>10. حذف الحساب</h2>
+    <p>يمكن للمستخدمين طلب حذف الحساب مباشرة من داخل التطبيق:</p>
+    <div class="info-card primary-border">
+      <strong>الملف الشخصي ← الإعدادات ← حذف حسابي</strong>
+    </div>
+    <p>يتطلب حذف الحساب تأكيد المستخدم والتحقق من الهوية.</p>
+    <p>بعد المعالجة الناجحة، يتم حذف المعلومات الشخصية ذات الصلة أو إخفاء هويتها، رهناً بالمتطلبات القانونية والمحاسبية ومتطلبات التدقيق اللازمة للاحتفاظ بها.</p>
+    <p>قد يكون هناك حاجة إلى إجراء إضافي عندما يكون المستخدم مالكًا لصالة رياضية أو لديه مسؤوليات نشطة في التدريب أو التنظيم.</p>
+    <p>يمكن للمستخدمين أيضًا الاتصال بـ <a href="mailto:support@santelifestyle.com">support@santelifestyle.com</a> بخصوص حذف الحساب.</p>
+  </div>
+
+  <div class="section">
+    <h2>11. حقوق المستخدم</h2>
+    <p>رهنًا بالتشريع المعمول به، يمكن للمستخدمين طلب:</p>
+    <ul>
+      <li>الوصول إلى بياناتهم الشخصية.</li>
+      <li>تصحيح المعلومات غير الدقيقة.</li>
+      <li>تحديث معلوماتهم.</li>
+      <li>حذف المعلومات الشخصية عند الاقتضاء.</li>
+      <li>سحب الموافقة عندما تستند المعالجة إلى الموافقة.</li>
+      <li>الاعتراض على أنشطة معالجة معينة حيثما يسمح القانون.</li>
+    </ul>
+    <p>لممارسة هذه الحقوق، اتصل بـ:</p>
+    <div class="info-card primary-border">
+      <strong>البريد الإلكتروني:</strong> <a href="mailto:support@santelifestyle.com">support@santelifestyle.com</a><br>
+      <strong>واتساب:</strong> <a href="https://wa.me/213550281978">+213 550 281 978</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>12. أمن البيانات</h2>
+    <p>يطبق SLS Games ضمانات تقنية وتنظيمية مصممة لحماية البيانات الشخصية.</p>
+    <p>وتشمل هذه:</p>
+    <ul>
+      <li>اتصالات آمنة.</li>
+      <li>آليات المصادقة.</li>
+      <li>ضوابط الوصول القائمة على الأدوار.</li>
+      <li>قيود الوصول إلى البيانات.</li>
+      <li>تدابير أمنية وتسجيل مناسبة.</li>
+    </ul>
+    <p>لا يمكن لأي نظام معلومات ضمان الأمان المطلق. يتخذ SLS Games تدابير معقولة لتقليل مخاطر الوصول غير المصرح به أو الفقدان أو سوء الاستخدام.</p>
+  </div>
+
+  <div class="section">
+    <h2>13. التغييرات على هذه السياسة</h2>
+    <p>قد يتم تحديث سياسة الخصوصية هذه لتعكس التغييرات في SLS Games أو ميزاته أو المتطلبات القانونية المعمول بها.</p>
+    <p>قد يتم إبلاغ المستخدمين بالتغييرات المهمة من خلال التطبيق أو القنوات المناسبة الأخرى.</p>
+  </div>
+
+  <div class="section">
+    <h2>14. الاتصال</h2>
+    <p>للأسئلة أو الطلبات المتعلقة بالخصوصية:</p>
+    <div class="info-card primary-border">
+      <strong>المدرب سمير بن عيسى – SLS Games</strong><br>
+      <strong>البريد الإلكتروني:</strong> <a href="mailto:support@santelifestyle.com">support@santelifestyle.com</a><br>
+      <strong>واتساب:</strong> <a href="https://wa.me/213550281978">+213 550 281 978</a>
+    </div>
+  </div>
+</div>
 
 </main>
 
 <footer>
-  © 2026 SLS Games. Tous droits réservés. · All rights reserved.
+  © 2026 SLS Games. Tous droits réservés. · All rights reserved. · جميع الحقوق محفوظة.
 </footer>
 
 <script>
   function setLang(lang) {
-    document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
-    document.getElementById('lang-' + lang).classList.add('active');
-    document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+    // 1. Cacher tous les contenus
+    document.querySelectorAll('.lang-content').forEach(el => {
+      el.classList.remove('active');
+    });
+    
+    // 2. Afficher le contenu sélectionné
+    document.getElementById('content-' + lang).classList.add('active');
+    
+    // 3. Mettre à jour les boutons
+    document.querySelectorAll('.lang-switch button').forEach(b => {
+      b.classList.remove('active');
+    });
     document.getElementById('btn-' + lang).classList.add('active');
+    
+    // 4. Mettre à jour l'attribut lang et dir (RTL pour l'arabe)
     document.documentElement.lang = lang;
+    if (lang === 'ar') {
+      document.body.setAttribute('dir', 'rtl');
+      document.getElementById('subtitle-text').innerText = 'سياسة الخصوصية';
+    } else {
+      document.body.setAttribute('dir', 'ltr');
+      document.getElementById('subtitle-text').innerText = lang === 'fr' ? 'Politique de confidentialité' : 'Privacy Policy';
+    }
   }
 </script>
 
